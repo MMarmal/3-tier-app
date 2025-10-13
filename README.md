@@ -1,3 +1,9 @@
+## to install dependencies
+
+```bash
+./scripts/setup.sh
+```
+
 ## To run locally
 
 ```bash
