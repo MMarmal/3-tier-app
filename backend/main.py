@@ -1,7 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from pymongo import MongoClient
 from fastapi.middleware.cors import CORSMiddleware
-
 import os
 
 app = FastAPI()
@@ -24,3 +23,13 @@ def get_users():
          users = list(collection.find({}, {"_id": 0}))
          return {"users": users}
 
+
+@app.post("/users")
+async def add_user(request: Request):
+    data = await request.json()
+    name = data.get("name")
+    if not name:
+        return {"error": "Name field is required"}
+    
+    collection.insert_one({"name": name})
+    return {"message": f"User '{name}' added successfully"}
