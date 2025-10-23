@@ -1,12 +1,11 @@
 #!/bin/bash
 
-cd backend
-python3 -m venv .venv
-source .venv/bin/activate
-pip3 install -r requirements.txt
+python3 -m venv backend/.venv
+source backend/.venv/bin/activate
 
-cd ../frontend
-npm install
+pip install -r backend/requirements.txt
+
+npm install --prefix frontend
 
 echo "All dependencies installed!"
 echo "Your virtual environment is ready."
