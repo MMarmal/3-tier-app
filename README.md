@@ -1,4 +1,6 @@
-## to install dependencies
+# The application displays users from a mongo database, and allows the user to add to that db.
+
+# The app consists of a frontend built with React and a backend built with FastApi. It can be run locally or using Docker.
 
 ```bash
 ./scripts/setup.sh
