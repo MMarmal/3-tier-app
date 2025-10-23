@@ -2,6 +2,8 @@
 
 # The app consists of a frontend built with React and a backend built with FastApi. It can be run locally or using Docker.
 
+## To install dependencies
+
 ```bash
 ./scripts/setup.sh
 ```
