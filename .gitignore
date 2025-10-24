@@ -1,5 +1,42 @@
+# ===== Node / React =====
 frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
+# ===== Python / FastAPI =====
 backend/__pycache__/
-
 backend/.venv/
+backend/.mypy_cache/
+backend/.pytest_cache/
+backend/.DS_Store
+backend/*.pyc
+backend/*.pyo
+backend/.env
+*.sqlite3
+
+# ===== VSCode / IDE settings =====
+.vscode/
+.idea/
+*.swp
+
+# ===== OS-generated files =====
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+*.log
+logs/
+
+# ===== Docker =====
+mongo_data/
+*.pid
+*.seed
+*.bak
+
+# ===== Environment files =====
+.env
+.env.*
