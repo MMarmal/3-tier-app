@@ -1,21 +1,19 @@
 # ===== Node / React =====
-frontend/node_modules/
-frontend/build/
-frontend/.env
-frontend/.DS_Store
+node_modules/
+build/
+.env
+.DS_Store
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
 # ===== Python / FastAPI =====
-backend/__pycache__/
-backend/.venv/
-backend/.mypy_cache/
-backend/.pytest_cache/
-backend/.DS_Store
-backend/*.pyc
-backend/*.pyo
-backend/.env
+__pycache__/
+.venv/
+.mypy_cache/
+.pytest_cache/
+*.pyc
+*.pyo
 *.sqlite3
 
 # ===== VSCode / IDE settings =====
