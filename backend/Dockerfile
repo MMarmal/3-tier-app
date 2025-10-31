@@ -19,6 +19,9 @@ RUN adduser \
     --uid "${UID}" \
     appuser
 
+# -S : "system” account. These are non-login, lightweight accounts typically used for running apps.
+RUN adduser -S appuser
+
 WORKDIR /app
 
 RUN --mount=type=bind,source=requirements.txt,target=/tmp/requirements.txt \
