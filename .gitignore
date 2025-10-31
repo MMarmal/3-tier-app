@@ -1,38 +1,72 @@
-# ===== Node / React =====
+# ==================================
+# ===== Node / React (Frontend) ====
+# ==================================
 node_modules/
 build/
+dist/
+dist-ssr/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# ===== Python / FastAPI =====
+# ==================================
+# ===== Python / FastAPI (Backend) =====
+# ==================================
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Environments
 .venv/
+.env
+.env.*
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Build / Packaging / Cache
 .mypy_cache/
 .pytest_cache/
-*.pyc
-*.pyo
-*.sqlite3
+htmlcov/
+.tox/
+.cache/
+.coverage*
+develop-eggs/
+dist/
+*.egg-info/
+*.egg
+MANIFEST
 
+# ===================================
 # ===== VSCode / IDE settings =====
+# ===================================
 .vscode/
+!.vscode/extensions.json
 .idea/
-*.swp
-
-# ===== OS-generated files =====
 .DS_Store
 Thumbs.db
+*.swp
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
-# ===== Logs =====
+# ==================================
+# ===== Logs, Data & Docker Artifacts =====
+# ==================================
 *.log
 logs/
-
-# ===== Docker =====
 mongo_data/
 *.pid
 *.seed
 *.bak
-
-# ===== Environment files =====
-.env
-.env.*
+*.pid.lock
+*.tar
