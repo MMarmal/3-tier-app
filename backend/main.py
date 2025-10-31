@@ -1,7 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from pymongo import MongoClient
+from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-
 import os
 
 app = FastAPI()
@@ -19,8 +19,19 @@ client = MongoClient(MONGO_URI)
 db = client["testdb"]
 collection = db["users"]
 
+
+class User(BaseModel):
+    name: str
+
+
+
 @app.get("/users")
 def get_users():
          users = list(collection.find({}, {"_id": 0}))
          return {"users": users}
 
+
+@app.post("/users")
+async def add_user(user: User):
+    collection.insert_one(user.dict())
+    return {"message": f"User '{user.name}' added successfully"}
