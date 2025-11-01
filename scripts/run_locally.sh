@@ -1,19 +1,25 @@
-#!/bin/bash 
+#!/bin/bash
 
-echo "Starting MongoDB..."
+echo "Starting MongoDB container..."
 
-brew services start mongodb-community@7.0
+# '2>/dev/null' hides any error message (for example, if the container doesn't exist).
+docker rm -f 3-tier-app-database 2>/dev/null 
 
-echo "Starting FastAPI..." 
+docker run -d \
+  --name 3-tier-app-database \
+  -p 27017:27017 \
+  -v "$(pwd)/mongo_data:/data/db" \
+  mongo:8.0
 
-cd backend 
+
+echo "Starting FastAPI backend..."
 
 if [ -z "$VIRTUAL_ENV" ]; then
-    source .venv/bin/activate
+    source backend/.venv/bin/activate
 fi
 
-uvicorn main:app --reload --host 0.0.0.0 --port 8000 &
+uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000 &
 
-echo "Starting React frontend..." 
+echo "Starting React frontend..."
 
-cd ../frontend && npm start
+npm start --prefix frontend
