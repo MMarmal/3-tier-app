@@ -1,17 +1,34 @@
-FROM node:22-alpine
+ARG NODE_VERSION=22-alpine
+ARG NGINX_VERSION=1.29-alpine
+
+# ---- Stage 1: Build the React app ----
+FROM node:${NODE_VERSION} AS build
 
 WORKDIR /app
 
 RUN --mount=type=bind,source=package.json,target=package.json,rw \
     --mount=type=bind,source=package-lock.json,target=package-lock.json,rw \
     --mount=type=cache,target=/root/.npm \
-    npm install
+    npm ci
 
 COPY . .
 
-# Give ownership of /app to the 'node' user so it can write cache files, etc.
-RUN chown -R node:node /app
+RUN npm run build
 
-USER node
 
-CMD ["npm","start"]
+# ---- Stage 2: Serve using Nginx ----
+FROM nginxinc/nginx-unprivileged:${NGINX_VERSION} AS runner
+
+USER nginx
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy the static build output from the build stage to Nginx's default HTML serving directory
+COPY --chown=nginx:nginx  --from=build /app/build /usr/share/nginx/html
+
+
+EXPOSE 3000
+
+ENTRYPOINT ["nginx", "-c", "/etc/nginx/nginx.conf"]
+CMD ["-g", "daemon off;"]
+
