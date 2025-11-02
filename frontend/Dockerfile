@@ -24,7 +24,7 @@ USER nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the static build output from the build stage to Nginx's default HTML serving directory
-COPY --chown=nginx:nginx  --from=build /app/build /usr/share/nginx/html
+COPY --chown=nginx:nginx  --from=build /app/dist /usr/share/nginx/html
 
 
 EXPOSE 3000
