@@ -39,6 +39,16 @@ When a user interacts with the frontend (by submitting a new user form), the fro
 ./scripts/build_images.sh
 ```
 
+### Or build each one individually
+
+```bash
+./scripts/build_frontend.sh
+```
+
+```bash
+./scripts/build_backend.sh
+```
+
 ## To run the conatinerized images
 
 ```bash
