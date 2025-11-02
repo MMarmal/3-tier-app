@@ -45,6 +45,18 @@ When a user interacts with the frontend (by submitting a new user form), the fro
 ./scripts/run_compose.sh
 ```
 
+## To run backend only locally
+
+```bash
+./scripts/run_backend_local.sh
+```
+
+### Or using docker compose
+
+```bash
+./scripts/run_backend_compose.sh
+```
+
 ## Frontend → http://localhost:5173
 
 ## Backend → http://localhost:8000/users
