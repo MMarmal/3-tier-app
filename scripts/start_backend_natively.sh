@@ -2,13 +2,7 @@
 
 echo "Starting MongoDB container..."
 
-docker rm -f 3-tier-app-database 2>/dev/null
-
-docker run -d \
-  --name 3-tier-app-database \
-  -p 27017:27017 \
-  -v "$(pwd)/mongo_data:/data/db" \
-  mongo:8.0
+docker compose up -d database
 
 echo "Starting FastAPI backend..."
 

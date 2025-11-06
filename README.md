@@ -30,7 +30,7 @@ When a user interacts with the frontend (by submitting a new user form), the fro
 ## To run locally
 
 ```bash
-./scripts/run_locally.sh
+./scripts/start_natively.sh
 ```
 
 ## To build the Docker images
@@ -52,19 +52,25 @@ When a user interacts with the frontend (by submitting a new user form), the fro
 ## To run the conatinerized images
 
 ```bash
-./scripts/run_compose.sh
+./scripts/start_containerized.sh
 ```
 
 ## To run backend only locally
 
 ```bash
-./scripts/run_backend_local.sh
+./scripts/start_backend_natively.sh
 ```
 
 ### Or using docker compose
 
 ```bash
-./scripts/run_backend_compose.sh
+./scripts/start_backend_containerized.sh
+```
+
+### to stop and remove the containers
+
+```bash
+./scripts/stop_compose.sh
 ```
 
 ## Frontend → http://localhost:5173
