@@ -2,7 +2,6 @@
 # ===== Node / React (Frontend) ====
 # ==================================
 node_modules/
-build/
 dist/
 dist-ssr/
 npm-debug.log*
