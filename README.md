@@ -73,6 +73,6 @@ When a user interacts with the frontend (by submitting a new user form), the fro
 ./scripts/stop_compose.sh
 ```
 
-## Frontend → http://localhost:5173
+## Frontend → http://localhost:3000
 
 ## Backend → http://localhost:8000/users
