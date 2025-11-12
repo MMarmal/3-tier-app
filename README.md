@@ -70,7 +70,7 @@ When a user interacts with the frontend (by submitting a new user form), the fro
 ### to stop and remove the containers
 
 ```bash
-./scripts/stop_compose.sh
+./scripts/stop_containers.sh
 ```
 
 ## Frontend → http://localhost:3000
