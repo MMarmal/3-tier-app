@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1  
+  selector:
+    matchLabels:
+      app: frontend # Kubernetes uses matchLabels to know which Pods belong to this Deployment. Any Pod with label app: frontend is considered managed by this Deployment.
+  template:
+    metadata:
+      labels:
+        app: frontend # The template defines what each Pod created by this Deployment should look like. These labels are also used by Services to find the correct Pods (for traffic routing).
+    spec:
+      containers:
+        - name: frontend
+          image: 3-tier-app-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000  
+          #env:
+          #  - name: REACT_APP_API_URL             # URL to reach backend inside cluster
+          #    value: /api  
+                                                  
