@@ -4,19 +4,21 @@ function App() {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState("");
 
+const API_URL = "";
+
   useEffect(() => {
     fetchUsers();
   }, []);
 
   const fetchUsers = () => {
-    fetch("http://localhost:8000/users")
+    fetch(`${API_URL}/users`)
       .then(res => res.json())
       .then(data => setUsers(data.users));
   };
 
   const handleAddUser = async () => {
     if (!newUser.trim()) return;
-    await fetch("http://localhost:8000/users", {
+    await fetch(`${API_URL}/users`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: newUser }),
