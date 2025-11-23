@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import os
+import urllib.parse  #  for encoding special characters
 
 app = FastAPI()
 
@@ -25,7 +26,10 @@ MONGO_USERNAME = read_secret('mongo_user')
 MONGO_PASSWORD = read_secret('mongo_password')
 
 if MONGO_USERNAME and MONGO_PASSWORD:
-    MONGO_URI = f"mongodb://{MONGO_USERNAME}:{MONGO_PASSWORD}@database:27017/"
+    # Encode username and password to handle special characters
+    MONGO_USERNAME_ENC = urllib.parse.quote_plus(MONGO_USERNAME)
+    MONGO_PASSWORD_ENC = urllib.parse.quote_plus(MONGO_PASSWORD)
+    MONGO_URI = f"mongodb://{MONGO_USERNAME_ENC}:{MONGO_PASSWORD_ENC}@database:27017/"
 else:
     MONGO_URI = "mongodb://localhost:27017/"
 
