@@ -6,7 +6,10 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-
+    develop:
+      watch:
+        - action: rebuild
+          path: ./frontend
   backend:
     build:
       context: ./backend
@@ -16,6 +19,10 @@ services:
       - "8000:8000"
     depends_on:
       - database
+    develop:
+      watch:
+        - action: rebuild
+          path: ./backend
   database:
     image: mongo:8.0
     ports:
