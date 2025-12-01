@@ -1,3 +1,5 @@
+# Ignore Docker secrets
+secrets/
 # ==================================
 # ===== Node / React (Frontend) ====
 # ==================================
