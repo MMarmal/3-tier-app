@@ -1,8 +1,9 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from pymongo import MongoClient
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import os
+from urllib.parse import quote_plus  #  for encoding special characters
 
 app = FastAPI()
 
@@ -14,7 +15,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/")
+def read_secret(secret_name):
+    try:
+        with open(f'/run/secrets/{secret_name}', 'r') as f:
+            return f.read().strip()
+    except FileNotFoundError:
+        return None
+
+MONGO_USERNAME = read_secret('mongo_user')
+MONGO_PASSWORD = read_secret('mongo_password')
+
+if MONGO_USERNAME and MONGO_PASSWORD:
+    # Encode username and password to handle special characters
+    MONGO_USERNAME_ENC = quote_plus(MONGO_USERNAME)
+    MONGO_PASSWORD_ENC = quote_plus(MONGO_PASSWORD)
+    MONGO_URI = f"mongodb://{MONGO_USERNAME_ENC}:{MONGO_PASSWORD_ENC}@database:27017/"
+else:
+    MONGO_URI = "mongodb://localhost:27017/"
+
 client = MongoClient(MONGO_URI)
 db = client["testdb"]
 collection = db["users"]
