@@ -1,0 +1,13 @@
+resources:
+  - ../../base
+
+nameSuffix: -dev
+
+namespace: dev
+
+patches:
+  - path: frontend-deployment.yaml
+  - path: backend-deployment.yaml
+  - path: statefulSet.yaml
+  - path: ingress-backend.yaml
+  - path: ingress-frontend.yaml

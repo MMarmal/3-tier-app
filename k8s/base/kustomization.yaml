@@ -1,0 +1,16 @@
+resources:
+  - frontend/deployment.yaml
+  - frontend/service.yaml
+
+  - backend/deployment.yaml
+  - backend/service.yaml
+
+  - database/statefulset.yaml
+  - database/service.yaml
+  - database/secret.yaml
+
+  - ingress-frontend.yaml
+  - ingress-backend.yaml
+
+
+

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+spec:
+  selector:
+    app: mongo
+  ports:
+    - port: 27017
+      targetPort: 27017
+  clusterIP: None    
+#  Headless service: no virtual IP, returns pod DNS names. 
+
+#  with a normal Service, Kubernetes would load-balance between the Pods randomly
+#  the app wouldn’t know which Pod it was talking to.
+
+# But with a headless Service, Kubernetes creates DNS A records for each Pod so that:
+# - Each Pod can contact the others directly using predictable hostnames.
+# - The StatefulSet can maintain stable peer relationships and data replication.
