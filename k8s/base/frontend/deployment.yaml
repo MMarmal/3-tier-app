@@ -18,7 +18,5 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000  
-          #env:
-          #  - name: REACT_APP_API_URL             # URL to reach backend inside cluster
-          #    value: /api  
+      
                                                   

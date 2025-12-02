@@ -4,7 +4,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState("");
 
-const API_URL = "";
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL || "http://localhost:8000";
 
   useEffect(() => {
     fetchUsers();
